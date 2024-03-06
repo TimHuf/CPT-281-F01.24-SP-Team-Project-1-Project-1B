@@ -24,7 +24,7 @@ kd267382@my.stchas.edu | Katie Dunn
 
 th259988@my.stchas.edu | Timothy Huffman
 
-*School Email Placeholder* | Tyler Blackmore
+tb256032@my.stchas.edu | Tyler Blackmore
 
 _____________________________________________________________________________________________________
 
