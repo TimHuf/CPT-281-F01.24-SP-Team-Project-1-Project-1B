@@ -2,9 +2,9 @@
 
 _____________________________________________________________________________________________________
 
-**Project Due**: March 8th, @ 11:59pm
+**Project Due:** March 8th, @ 11:59pm
 
-**Project Available**: Feb 14 at 8am - Mar 10 at 11:59pm
+**Project Available:** Feb 14 at 8am - Mar 10 at 11:59pm
 
 _____________________________________________________________________________________________________
 
@@ -18,7 +18,7 @@ together, generating a new polynomial as the addition result
 
 _____________________________________________________________________________________________________
 
-**Project 1 Team Members**
+**Project 1 Team Members:**
 
 *School Email Placeholder* | Katie Dunn
 
