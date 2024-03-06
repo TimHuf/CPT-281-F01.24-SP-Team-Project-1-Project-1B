@@ -6,11 +6,15 @@ Project Available: March 10th, 11:59pm
 
 Project 1B: Addition Of Two Polynomials
 
+_____________________________________________________________________________________________________
+
 Description of Project: 
 
 A polynomial can be represented as an ordered list of terms, where the terms are ordered by their
 exponents. The addition of two polynomials is performed by adding terms with the same exponent
 together, generating a new polynomial as the addition result
+
+_____________________________________________________________________________________________________
 
 Project 1 Team Members:
 
