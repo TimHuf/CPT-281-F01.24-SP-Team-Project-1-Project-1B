@@ -12,6 +12,8 @@ together, generating a new polynomial as the addition result
 Project 1 Team Members:
 
 *School Email Placeholder* | Katie Dunn
+
 th259988@my.stchas.edu | Timothy Huffman
+
 *School Email Placeholder* | Tyler Blackmore
 
