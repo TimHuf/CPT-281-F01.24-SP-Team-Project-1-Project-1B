@@ -1,5 +1,5 @@
 
-#include "polynominal.h"
+#include "PolynominalList.h"
 #include <iostream>
 
 int main()
