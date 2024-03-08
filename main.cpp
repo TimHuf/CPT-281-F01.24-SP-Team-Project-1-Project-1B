@@ -21,18 +21,20 @@ int main()
         cin >> choice;
         if (choice == '1') {
             poly_1 = inputPolynomial();
-            cout << "First Polynomial entered: " << poly_1 << "\n";
+            cout << "First Polynomial entered: "; 
+            poly_1.displayResult();
         }
         else if (choice == '2') {
             poly_2 = inputPolynomial();
-            cout << "Second Polynomial Entered: " << poly_2 << "\n";
+            cout << "Second Polynomial Entered: ";
+            poly_2.displayResult();
         }
         else if (choice == '3') {
             if (poly_1.head == nullptr || poly_2.head == nullptr) {
                 cout << "Please enter both polynomials first.\n";
             }
             else {
-                result = poly_1 + poly_2;
+                result = poly_1.addPolynomials(poly_2);
                 cout << "Polynomials added.\n";
             }
         }
@@ -41,7 +43,8 @@ int main()
                 cout << "No result to show. Please add polynomials first.\n";
             }
             else {
-                cout << "Result: " << result << "\n";
+                cout << "Result: ";
+                result.displayResult();
 
             }
         }
