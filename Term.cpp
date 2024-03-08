@@ -63,10 +63,6 @@ bool Term::operator<(const Term& other) const {
 	return exponent > other.exponent; // Sort in decreasing order
 }
 
-bool Term::operator>(const Term& other) const {
-	return exponent < other.exponent; 
-}
-
 bool Term::operator==(const Term& other) const {
 	return exponent == other.exponent;
 }
