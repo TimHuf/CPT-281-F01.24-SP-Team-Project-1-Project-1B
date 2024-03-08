@@ -20,6 +20,9 @@ public:
 	// Function to display the result polynomial.
 	void displayResult() const;
 
+	// Function to check if poolynomial is empty.
+	bool isEmpty() const;
+
 
 private:
 	std::list<Term> polynomial;
