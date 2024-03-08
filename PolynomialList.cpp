@@ -98,6 +98,9 @@ PolynomialList PolynomialList::addPolynomials(const PolynomialList& other) const
 	return result;
 }
 
+bool PolynomialList::isEmpty() const {
+    return inputPolynomial = nullptr;
+}
 
 void PolynomialList::displayResult() const {
 	auto it = polynomial.begin();
