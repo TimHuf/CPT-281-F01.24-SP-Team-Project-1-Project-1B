@@ -30,7 +30,7 @@ int main()
             poly_2.displayResult();
         }
         else if (choice == '3') {
-            if (poly_1.head == nullptr || poly_2.head == nullptr) {
+            if (poly_1.isEmpty() || poly_2.isEmpty()) {
                 cout << "Please enter both polynomials first.\n";
             }
             else {
@@ -39,7 +39,7 @@ int main()
             }
         }
         else if (choice == '4') {
-            if (result.head == nullptr) {
+            if (result.isEmpty()) {
                 cout << "No result to show. Please add polynomials first.\n";
             }
             else {
