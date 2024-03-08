@@ -29,7 +29,6 @@ public:
 
 	// Overload comparison operators
 	bool operator<(const Term& other) const;
-	bool operator>(const Term& other) const;
 	bool operator==(const Term& other) const;
 
 	// Display term
