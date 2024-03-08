@@ -29,7 +29,7 @@ int main()
         }
         else if (choice == '3') {
             if (poly_1.head == nullptr || poly_2.head == nullptr) {
-                cout << "Please enter btoh polynominals first.\n";
+                cout << "Please enter both polynominals first.\n";
             }
             else {
                 result = poly_1 + poly_2;
