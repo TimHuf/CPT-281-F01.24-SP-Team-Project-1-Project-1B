@@ -14,7 +14,7 @@ int main()
     cout << "Polynomial Calculator\n";
 
     // Variables used for first and second polynominal, and the final result and user choice
-    PolynominalList poly_1, poly_2, result;
+    PolynomialList poly_1, poly_2, result;
     char choice;
     
     // Displays the menu for user to navigate through
