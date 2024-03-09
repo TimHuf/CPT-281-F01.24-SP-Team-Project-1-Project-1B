@@ -14,30 +14,41 @@ Term::Term(int coefficient, int exponent) : coefficient(coefficient), exponent(e
 Term Term::parseTerm(const string& termString) {
 	int coefficient = 0;
 	int exponent = 0;
+	bool negative = false;
+	size_t i = 0;
 
-	istringstream iss(termString);
-
-
-	// Extract coefficient from the string entered.
-	iss >> coefficient;
-
-	// Check for an 'x' or '^' to determine if there is an exponent.
-	char x;
-	if (iss >> x) {
-		if (x == 'x') {
-			// Check for '^' to get the exponent.
-			char powerOf;
-			if (iss >> powerOf >> exponent && powerOf == '^') {
-				// Successfully extracted exponent.
-			}
-		}
-
-		else {
-			// If there is no 'x', the term is a constant.
-			exponent = 0;
-
-		}
+	// Check for negative coefficient.
+	if (termString[i] == '-') {
+	    negative = true;
+	    i++;
 	}
+	
+	// Parse coefficient
+	while (i < termString.size() && isdigit(termString[i])) {
+	    coefficient = coefficient * 10 + (termString[i] - '0');
+	    i++;
+	}
+	// Coefficient is 1 or -1.
+	if (i == 0 || (i == 1 && negative)) {
+	    coefficient = negative ? -1 : 1;
+	} else if (negative) {
+	    coefficient = -coefficient;
+	}
+	
+	// Parse variable 'x' and exponent.
+	if (i < termString.size() && termString[i] == 'x') {
+	    i++;    // Skip x.
+	    exponent = 1;   // Default exponent.
+	    if (i < termString.size() && termString[i] == '^') {
+	        i++; // Skip '^'
+	        exponent = 0; // Reset getExponent
+	        while (i < termString.size() && isdigit(termString[i])) {
+	            exponent = exponent * 10 + (termString[i] - '0');
+	            i++;
+	        }
+	    }
+	}
+	
 	return Term(coefficient, exponent);
 }
 
@@ -67,14 +78,22 @@ bool Term::operator==(const Term& other) const {
 	return exponent == other.exponent;
 }
 
-// Display function
-void Term::display() const {
-	if (coefficient != 0) {
-		if (exponent == 0) {
-			cout << coefficient;
-		}
-		else {
-			cout << coefficient << "x^" << exponent;
-		}
-	}
+// NEW DISPLAY function
+void Term::display(bool isFirstTerm) const {
+    int absCoeff = std::abs(coefficient); // Absolute value of coefficiient
+    
+    if (coefficient != 0) {
+        if (isFirstTerm || absCoeff != 1 || exponent == 0) {
+            cout << absCoeff;
+        }
+        
+        // Display x and exponent if possible.
+        if (exponent != 0) {
+            cout << "x";
+            if (exponent != 1) {
+                cout << "^" << exponent;
+            }
+        }
+    }
 }
+
