@@ -3,23 +3,31 @@
 #include <iostream>
 #include <sstream>
 
+// Input a polynomial from the user. User enters polynomial in string format.
+// Then this function parses into individual terms.
 void PolynomialList::inputPolynomial() {
 	// Prompt user to enter a polynomial.
 	string input;
 	cout << "Enter a polynomial: ";
-	getline(cin, input);
+	getline(cin, input);		// Read the entire line as a polynomial string.
 	cout << "Entered polynomial: " << input << endl;
 
-	// NEW CODE ****************
+	// Modify the input string to simplify the parsing of the terms.
 	size_t pos = 0;
+	// This loop inserts a '+' before every '-' that is not at the beginning of the string.
+	// This will help in splitting the string into terms at '+' characters later.
 	while ((pos = input.find_first_of('-', pos)) != string::npos) {
 		if (pos != 0) {
+			// Insert a '+' before the '-' if '-' is not at the start of the string.
+			// This is needed because the '-' sign indicates a negative coefficient,
+			// but for splitting purposes, we want to treat it like a separate term.
 			input.insert(pos, "+");
-			pos++;
+			pos++;	// Increment position to skip the newly inserted '+'.
 		}
-		pos++;	// move to next character
+		pos++;	// Move to the next character in the string.
 	}
 
+	// Parse and add each term to the polynomial list.
 	istringstream iss(input);
 	string termString;
 	while (getline(iss, termString, '+')) {
@@ -29,20 +37,22 @@ void PolynomialList::inputPolynomial() {
 		}
 	}
 
+	// Sort the terms and combine like terms.
 	sortAndCombineLikeTerms();
 }
 
 
-// Sort the polynomial and combine like terms.
+// Sort the polynomial's terms in decreasing order of exponents and combine like terms.
 void PolynomialList::sortAndCombineLikeTerms() {
 	// Sort the polynomial in decreasing order of exponents.
 	polynomial.sort();
 
+	// Iterate through the list and combine terms with the same exponent.
 	for (auto it = polynomial.begin(); it != polynomial.end();) {
 		auto next = std::next(it);
 		if (next != polynomial.end() && *it == *next) {
 			it->setCoefficient(it->getCoefficient() + next->getCoefficient());
-			polynomial.erase(next);
+			polynomial.erase(next);	// Remove the next term after combining.
 		}
 		else {
 			++it;
@@ -51,16 +61,17 @@ void PolynomialList::sortAndCombineLikeTerms() {
 }
 
 
-// Function that adds the two polynomials. *** ERROR HERE ***
-// Takes another PolynomialList as an argument and returns a new PolynomialList containing the sum of the two polynomials.
+// Function that adds the two polynomials.
+// other: the other polynomial to add to this one.
+// Returns: a PolynomialList that is the sum of this polynomil and "other".
 PolynomialList PolynomialList::addPolynomials(const PolynomialList& other) const {
 	 PolynomialList result;	// Result polynomial initialized as an empty polynomial.
 
-	// Iterators for the two polynomials, both initialized to the beginning of each polynomial.
+	// Iterators to traverse two polynomials, both initialized to the beginning of each polynomial.
 	auto iterator1 = polynomial.begin();
 	auto iterator2 = other.polynomial.begin();
 
-	// Iterate through the terms of the two polynomials.
+	// Iterate through both polynomials and add terms.
 	while (iterator1 != polynomial.end() && iterator2 != other.polynomial.end()) {
 		// If the exponents of the current terms are equal...
 		if (iterator1->getExponent() == iterator2->getExponent()) {
@@ -93,29 +104,29 @@ PolynomialList PolynomialList::addPolynomials(const PolynomialList& other) const
 		iterator2++;
 	}
 
+	// Sort and combine like terms in the result.
 	result.sortAndCombineLikeTerms();
 	return result;
 }
 
-
-
+// Check if the polynomial list is empty.
 bool PolynomialList::isEmpty() const {
     return polynomial.empty();
 }
 
-// NEW DISPLAYRESULT Function
+// Display the polynomial in a user-friendly fashion.
 void PolynomialList::displayResult() const {
     if (polynomial.empty()) {
-        cout << "0" << endl;
+        cout << "0" << endl;	// Handle the case of an empty polynomial.
         return;
     }
-    
+    // Iterate over each term in the polynomial and display it.	
     bool isFirstTerm = true;
     for (const auto& term : polynomial) {
         if (!isFirstTerm) {
             cout << (term.getCoefficient() >= 0 ? " + " : " - ");
         } else if (term.getCoefficient() < 0) {
-            cout << "-"; //negative sign for the first term if negative.
+            cout << "-"; // Display a negative sign for the first term if negative.
         }
         term.display(isFirstTerm);
         isFirstTerm = false;
