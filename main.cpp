@@ -1,14 +1,22 @@
 
 #include "PolynomialList.h"
 #include <iostream>
+#include <limits>
+
+void pauseConsole() {
+    cout << "\nPress enter to continue...";
+    cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+}
+
 
 int main()
 {
     cout << "Polynomial Calculator\n";
 
     // Variables used for first and second polynominal, and the final result and user choice
-    Polynominal poly_1, poly_2, result;
+    PolynominalList poly_1, poly_2, result;
     char choice;
+    
     // Displays the menu for user to navigate through
     while (true) {
         cout << "\nMenu\n";
@@ -18,14 +26,18 @@ int main()
         cout << "4. Show Result\n";
         cout << "5. Exit\n";
         cout << "Enter your Choice: ";
+        
         cin >> choice;
+        // Clear input buffer to handle the enter when choosing a number.
+        cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+        
         if (choice == '1') {
-            poly_1 = inputPolynomial();
+            poly_1.inputPolynomial();
             cout << "First Polynomial entered: "; 
             poly_1.displayResult();
         }
         else if (choice == '2') {
-            poly_2 = inputPolynomial();
+            poly_2.inputPolynomial();
             cout << "Second Polynomial Entered: ";
             poly_2.displayResult();
         }
@@ -43,11 +55,21 @@ int main()
                 cout << "No result to show. Please add polynomials first.\n";
             }
             else {
-                cout << "Result: ";
+                cout << "\nPolynomials: \n";
+                cout << "First Polynomial: ";
+                poly_1.displayResult();
+                cout << "Second Polynomial: ";
+                poly_2.displayResult();
+                cout << "\nResult: ";
                 result.displayResult();
-
+                pauseConsole();
             }
         }
+        else if (choice == '5') {
+            cout << "Exiting program. \n";
+            break;
+        }
     }
+    return 0;
 }
 
