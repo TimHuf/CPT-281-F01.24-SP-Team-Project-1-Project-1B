@@ -20,7 +20,7 @@ public:
 	// Function to display the result polynomial.
 	void displayResult() const;
 
-	// Function to check if poolynomial is empty.
+	// Function to check if polynomial is empty.
 	bool isEmpty() const;
 
 
