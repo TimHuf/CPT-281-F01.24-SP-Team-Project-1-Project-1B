@@ -32,7 +32,7 @@ public:
 	bool operator==(const Term& other) const;
 
 	// Display term
-	void display() const;
+	void display(bool isFirstTerm = false) const;
 	
 };
 
