@@ -3,6 +3,8 @@
 #include <iostream>
 #include <limits>
 
+// Function to pause the console once the resultpolynomial is displayed so the Menu doesn't automatically pop up.
+// Prompts the user to press enter to continue after they are shown the result polynomial.
 void pauseConsole() {
     cout << "\nPress enter to continue...";
     cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
@@ -28,7 +30,7 @@ int main()
         cout << "Enter your Choice: ";
         
         cin >> choice;
-        // Clear input buffer to handle the enter when choosing a number.
+        // Clear input buffer to handle the 'enter' when choosing a number.
         cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
         
         if (choice == '1') {
